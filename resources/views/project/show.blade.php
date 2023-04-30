@@ -4,6 +4,14 @@
     <div class="container">
         <div>
             <h1>{{$project->title}}</h1>
+            <div>
+                @forelse($project->technologies as $technology)
+                    <span class="badge text-bg-secondary">{{ $technology->name }}</span>
+                @empty
+                    -
+                @endforelse
+            </div>
+            
             <p>({{$project->slug}})</p>
             <p>
                 @if($project->type)
