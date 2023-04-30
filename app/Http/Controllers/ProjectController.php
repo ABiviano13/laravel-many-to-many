@@ -104,6 +104,11 @@ class ProjectController extends Controller
 
         $project->update($data);
 
+        if(isset($data['technologies'])){
+
+            $project->technologies()->sync($data['technologies']);
+        }
+
         return to_route('projects.show', $project);
     }
 

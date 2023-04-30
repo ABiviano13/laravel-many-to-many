@@ -26,6 +26,7 @@
         </select>
       </div>
       <div class="mb-3">
+        
         <label for="title" class="form-label fw-bold">Seleziona la tecnologia: </label>
         @foreach($technologies as $technology)
           <div>
