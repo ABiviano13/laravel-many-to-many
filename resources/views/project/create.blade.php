@@ -9,11 +9,11 @@
     <form action="{{ route('projects.store') }}" method="POST">
       @csrf
       <div class="mb-3">
-        <label for="title" class="form-label">Titolo</label>
+        <label for="title" class="form-label fw-bold">Titolo</label>
         <input type="text" name="title" class="form-control" value="{{ old('title') }}" id="title" aria-describedby="titleHelp">
       </div>
       <div class="mb-3">
-        <label for="title" class="form-label">Tipologia</label>
+        <label for="title" class="form-label fw-bold">Tipologia</label>
         <select class="form-select" aria-label="Default select example" name="type_id">
           <option value="" selected>Seleziona Tipologia</option>
 
@@ -26,7 +26,19 @@
         </select>
       </div>
       <div class="mb-3">
-        <label for="content" class="form-label">Contenuto</label>
+        <label for="title" class="form-label fw-bold">Seleziona la tecnologia: </label>
+        @foreach($technologies as $technology)
+          <div>
+            <input name="technologies[]" type="checkbox" value="{{$technology->id}}" @checked( in_array($technology->id, old('technologies', [])))>
+            <label>
+              {{$technology->name}}
+            </label>
+          </div>
+        @endforeach
+
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label fw-bold">Contenuto</label>
         <textarea name="content" class="form-control" id="content">{{ old('content') }}</textarea>
       </div>
     
